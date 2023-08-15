@@ -1,3 +1,29 @@
+.hamburger-menu{
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    z-index: 300;
+    top: 10%;
+    right: 10%;
+
+    .menu{
+        @extend %fullSpace;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &-line {
+            width: 100%;
+            height: 4px;
+            background: $color-primary;
+            transform-origin: right;
+            transition: all 0.5s 0.5s;
+        }
+    }
+}
+
 .logo{
     display: block;
     width: 110px;
@@ -58,5 +84,64 @@
     &:hover{
         background: $color-primary;
         color: $color-dark;
+    }
+}
+
+.card{
+    width: 33.3333%;
+    height: 30vw;
+    position: relative;
+    overflow: hidden;
+
+    &:hover .card-overlay{
+        left: 0;
+    }
+
+    &-overlay{
+        position: absolute;
+        top: 0;
+        left: -100%;
+        background: rgba($color-primary, 0.6);
+        color: $color-white;
+        z-index: 10;
+        @include flexlayout;
+        flex-direction: column;
+        @extend %fullSpace;
+        transition: all 0.7s;
+
+        &-heading{
+            font-family: $font-nunito;
+            font-size: 50px;
+            @include textStyles(capitalize);
+        }
+
+        &-paragraph {
+            font-family: $font-josefinSans;
+            font-size: 30px;
+            margin-bottom: 30px;
+            @include textStyles(capitalize);
+        }
+
+        &-btn{
+            width: 150px;
+            height: 40px;
+            color: $color-primary;
+            background: $color-white;
+            font-family: $font-josefinSans;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid $color-primary;
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+
+    &-img{
+        @extend %fullSpace;
+        object-fit: cover;
+        opacity: 0.5;
     }
 }
